@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const items = [
   {
     question: "What payment methods do you accept?",
@@ -22,5 +29,21 @@ const items = [
 ];
 
 export const FAQs = () => {
-  return null;
+  return (
+    <div className=" bg-black text-white py-12 bg-gradient-to-t from-black to-[#5D2CA8]">
+      <div className="container flex flex-col gap-7">
+        <h2 className="text-5xl font-bold tracking-tighter text-center max-md:text-3xl faq">
+          Frequently asked questions
+        </h2>
+        <Accordion type="single" collapsible className=" w-[800px] mx-auto max-md:w-[360px]">
+          {items.map((item,i) => (
+            <AccordionItem key={i} value={`${i+1}`} className="py-6 faq">
+              <AccordionTrigger className="text-xl">{item.question}</AccordionTrigger>
+              <AccordionContent className="text-lg text-gray-400">{item.answer}</AccordionContent>
+              </AccordionItem>
+              ))}
+        </Accordion>
+      </div>
+    </div>
+  );
 };
